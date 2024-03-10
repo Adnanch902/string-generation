@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generated Strings</title>
+</head>
+<body>
+<h2>Below are the generated strings</h2>
+<ul th:if="${generatedStrings}">
+    <li th:each="generatedString : ${generatedStrings}" th:text="${generatedString}"></li>
+</ul>
+<a href="/history">View History</a>
+
+<form action="/generateAgain" method="get">
+    <button type="submit">Generate Again</button>
+</form>
+
+<form action="/" method="get">
+    <button type="submit">Go Back</button>
+</form>
+
+
+</body>
+</html>

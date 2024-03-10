@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random String Generator</title>
+</head>
+<body>
+<h2>Random String Generator</h2>
+<form action="/generate" method="post" th:object="${inputForm}">
+    <br>
+    <label>Number of Strings: <input type="number" th:field="*{numberStrings}" required></label><br>
+    <br><br>
+    <label>Characters per String: <input type="number" th:field="*{charactersPerString}" required></label><br>
+    <br><br>
+    <fieldset>
+        <legend>Which characters are allowed to occur in the strings?</legend>
+        <br>
+        <label><input type="checkbox" name="characterTypes" value="0123456789" checked> Numeric digits (0-9)</label><br><br>
+        <label><input type="checkbox" name="characterTypes" value="ABCDEFGHIJKLMNOPQRSTUVWXYZ" checked> Uppercase letters (A-Z)</label><br><br>
+        <label><input type="checkbox" name="characterTypes" value="abcdefghijklmnopqrstuvwxyz" checked> Lowercase letters (a-z)</label><br><br>
+    </fieldset>
+    <br><br>
+    <fieldset>
+        <legend>Do you want each string to be unique?</legend>
+        <label><input type="radio" name="uniqueStrings" value="true" th:checked="${inputForm.uniqueStrings == true}"> Each string should be unique</label><br><br>
+        <label><input type="radio" name="uniqueStrings" value="false" th:checked="${inputForm.uniqueStrings == false}"> Identical strings are allowed</label><br><br>
+    </fieldset>
+    <br><br><br>
+    <button type="submit">Get Strings</button><br><br>
+    <button type="reset">Reset From</button>
+</form>
+</body>
+</html>
